@@ -1,0 +1,16 @@
+# Ignorar entorno virtual
+venv/
+
+# Ignorar archivos de configuración sensibles
+.env
+
+# Ignorar archivos de migraciones si no se desea versionar
+/migrations/
+
+# Ignorar archivos de compilación Python
+*.pyc
+*.pyo
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
