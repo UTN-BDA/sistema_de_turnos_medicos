@@ -1,16 +1,21 @@
 # Ignorar entorno virtual
 venv/
+.venv/
 
 # Ignorar archivos de configuración sensibles
 .env
 
-# Ignorar archivos de migraciones si no se desea versionar
-/migrations/
+# Ignorar archivos de migraciones si no se deseara versionar.
+#/migrations/
 
 # Ignorar archivos de compilación Python
-*.pyc
-*.pyo
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Archivos del sistema operativo
+# Archivos del sistema operativo (para macOS y Windows)
 .DS_Store
 Thumbs.db
+
+# Archivos de logs (opcional)
+*.log
