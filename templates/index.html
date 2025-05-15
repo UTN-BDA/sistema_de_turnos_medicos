@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Turnos Médicos</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 2px solid orange;
+            border-radius: 10px;
+            background-color: #fffaf0;
+        }
+
+        h1 {
+            text-align: center;
+            color: orange;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Turnos Médicos</h1>
+        <form action="/registrar_turno" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required>
+
+            <label for="turno">Turno que solicita:</label>
+            <select id="turno" name="turno" required>
+                <option value="">--Seleccione una opción--</option>
+                <option value="radiografia">Radiografía</option>
+                <option value="oftalmologia">Oftalmología</option>
+                <option value="odontologia">Odontología</option>
+                <option value="urgencia">Urgencia médica</option>
+            </select>
+
+            <button type="submit">Solicitar Turno</button>
+        </form>
+    </div>
+</body>
+</html>
