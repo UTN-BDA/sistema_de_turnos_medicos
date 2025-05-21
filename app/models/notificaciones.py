@@ -26,10 +26,13 @@ class Notificacion(db.Model):
 
     paciente_id = Column(Integer, ForeignKey("pacientes.id"), nullable=True)
     turno_id = Column(Integer, ForeignKey("turnos.id"), nullable=True)
+    # Clave foránea para la relación con Medico
+    medico_id = Column(Integer, ForeignKey("usuarios.id"), nullable=True) 
 
     estado = Column(Enum(EstadoNotificacion), default=EstadoNotificacion.NO_LEIDA)
-    origen = Column(String(50), nullable=True)  # Opcional. Ej: 'médico', 'administrativo', 'sistema'
+    origen = Column(String(50), nullable=True)  
 
     # Relaciones opcionales
-    paciente = relationship("Paciente", back_populates="notificaciones")
+    paciente = relationship("Paciente", back_populates="notificaciones", foreign_keys=[paciente_id])
     turno = relationship("Turno", back_populates="notificaciones")
+    medico = relationship("Medico", back_populates="notificaciones", foreign_keys=[medico_id])
