@@ -1,39 +1,38 @@
 # services/turnos_service.py
-from flask import jsonify
 from datetime import datetime
-from models import db, Usuario, Turno, EstadoTurno
+from app.models.turnos import Turno, EstadoTurno
 
 def crear_turno(data):
+    required_fields = ["fecha_hora", "paciente_id", "medico_id"]
+    for field in required_fields:
+        if field not in data:
+            raise ValueError(f"Campo obligatorio '{field}' faltante.")
+
     try:
         fecha_hora = datetime.fromisoformat(data["fecha_hora"])
-    except Exception:
-        return {"error": "Formato de fecha inválido"}, 400
-
-    paciente = Usuario.query.get(data.get("paciente_id"))
-    medico = Usuario.query.get(data.get("medico_id"))
-
-    if not paciente or paciente.tipo.name != "PACIENTE":
-        return {"error": "Paciente inválido"}, 400
-    if not medico or medico.tipo.name != "MEDICO":
-        return {"error": "Médico inválido"}, 400
-
+    except ValueError:
+        raise ValueError("Formato de fecha inválido (se espera ISO 8601)")
+    
     turno = Turno(
         fecha_hora=fecha_hora,
         estado=EstadoTurno.PROGRAMADO,
-        paciente_id=paciente.id,
-        medico_id=medico.id,
+        paciente_id=data["paciente_id"],
+        medico_id=data["medico_id"],
+        administrativo_id=data.get("administrativo_id"),
         reprogramaciones=0
     )
-    db.session.add(turno)
-    db.session.commit()
 
-    return {"message": "Turno creado", "id": turno.id}, 201
+    return turno
 
 
 def modificar_turno(turno_id, nueva_fecha_str=None, nuevo_estado=None):
     turno = Turno.query.get(turno_id)
     if not turno:
         raise ValueError("Turno no encontrado")
+
+    # No se puede modificar un turno cancelado, atendido o perdido
+    if turno.estado in [EstadoTurno.CANCELADO, EstadoTurno.ATENDIDO, EstadoTurno.PERDIDO]:
+        raise ValueError(f"No se puede modificar un turno con estado '{turno.estado.value}'")
 
     if nueva_fecha_str:
         try:
@@ -55,7 +54,5 @@ def modificar_turno(turno_id, nueva_fecha_str=None, nuevo_estado=None):
     else:
         raise ValueError("Se requiere nueva fecha o nuevo estado")
 
-    db.session.add(turno)  # ← opcional, si se modifican campos automáticamente
-    db.session.commit()    # línea para aplicar cambios
 
     return turno

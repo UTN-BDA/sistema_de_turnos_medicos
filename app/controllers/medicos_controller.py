@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from app.models.medicos import Medico
-from app.database import db
+from app.extensions import db
 
 # Listar todos los médicos
 def listar_medicos():

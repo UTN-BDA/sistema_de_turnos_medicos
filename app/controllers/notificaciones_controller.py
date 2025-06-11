@@ -3,9 +3,12 @@ from flask import jsonify, request
 from app.models.notificaciones import Notificacion, TipoNotificacion, EstadoNotificacion
 from app.models.turnos import Turno
 from app.models.pacientes import Paciente
-from app.database import db
+from app.extensions import db
 
 def listar_notificaciones():
+    from sqlalchemy import inspect
+    print(inspect(Notificacion).relationships)
+
     notificaciones = Notificacion.query.all()
     return jsonify([{
         "id": n.id,

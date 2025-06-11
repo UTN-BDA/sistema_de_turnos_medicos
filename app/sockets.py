@@ -1,5 +1,5 @@
 from flask_socketio import emit, join_room
-from app.database import socketio
+from app.extensions import socketio
 
 # Evento: cuando el paciente se conecta al sistema
 @socketio.on('unirse')
@@ -14,6 +14,7 @@ def manejar_unirse(data):
 
 # Enviar una notificación a un paciente específico
 def notificar_paciente(paciente_id, mensaje):
+    print(f"[DEBUG] Emitiendo notificación a paciente {paciente_id}: {mensaje}")
     room = f"paciente_{paciente_id}"
     socketio.emit("nueva_notificacion", mensaje, room=room)
 

@@ -2,7 +2,7 @@
 from flask import Blueprint
 from app.controllers import notificaciones_controller
 
-notificaciones_bp = Blueprint('notificaciones_bp', __name__)
+notificaciones_bp = Blueprint('notificaciones_bp', __name__, url_prefix='/notificaciones')
 
 notificaciones_bp.route('/', methods=['GET'])(notificaciones_controller.listar_notificaciones)
 notificaciones_bp.route('/<int:id>', methods=['GET'])(notificaciones_controller.obtener_notificacion)

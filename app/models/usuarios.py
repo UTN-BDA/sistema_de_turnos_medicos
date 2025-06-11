@@ -1,8 +1,7 @@
 # Modelo base: Usuario con herencia simple
 from sqlalchemy import Column, Integer, String, Enum
-from sqlalchemy.ext.declarative import declared_attr
 from enum import Enum as PyEnum
-from app.database import db
+from app.extensions import db
 
 class TipoUsuario(PyEnum):
     PACIENTE = "paciente"
