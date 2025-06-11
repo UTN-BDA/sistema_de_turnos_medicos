@@ -2,6 +2,7 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from app.models.usuarios import Usuario, TipoUsuario
+from app.models.turnos import Turno
 
 class Medico(Usuario):
     __tablename__ = "medicos"
@@ -12,4 +13,6 @@ class Medico(Usuario):
     }
 
     especialidad = Column(String(100))
-    turnos = relationship("Turno", back_populates="medico")
+
+    #Relaciones inversas
+    turnos = relationship("Turno", back_populates="medico", foreign_keys=[Turno.medico_id])

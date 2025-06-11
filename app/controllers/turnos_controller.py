@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from app.models.turnos import Turno
 from app.models.usuarios import Usuario
-from app.database import db
+from app.extensions import db
 from datetime import datetime
 
 def listar_turnos():

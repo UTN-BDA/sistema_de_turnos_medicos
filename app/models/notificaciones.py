@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 from enum import Enum as PyEnum
-from app.database import db
+from app.extensions import db
 
 class TipoNotificacion(PyEnum):
     OTORGAMIENTO = "otorgamiento"
@@ -22,14 +22,12 @@ class Notificacion(db.Model):
     id = Column(Integer, primary_key=True)
     tipo = Column(Enum(TipoNotificacion), nullable=False)
     mensaje = Column(Text, nullable=False)
-    fecha_envio = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    fecha_envio = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
-    paciente_id = Column(Integer, ForeignKey("pacientes.id"), nullable=True)
-    turno_id = Column(Integer, ForeignKey("turnos.id"), nullable=True)
+    turno_id = Column(Integer, ForeignKey("turnos.id"), nullable=False)
 
-    estado = Column(Enum(EstadoNotificacion), default=EstadoNotificacion.NO_LEIDA)
+    estado = Column(Enum(EstadoNotificacion), default=EstadoNotificacion.NO_LEIDA, nullable=False)
     origen = Column(String(50), nullable=True)  # Opcional. Ej: 'médico', 'administrativo', 'sistema'
 
-    # Relaciones opcionales
-    paciente = relationship("Paciente", back_populates="notificaciones")
-    turno = relationship("Turno", back_populates="notificaciones")
+    # Relación opcional
+    turno = relationship("Turno", back_populates="notificaciones", foreign_keys=[turno_id])
