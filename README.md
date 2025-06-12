@@ -1,4 +1,5 @@
 
+# Proyecto: Sistema de Turnos Médicos Inteligente
 # Medical Center API
 
 Este proyecto es una API REST para la gestión de turnos médicos, desarrollada con Flask y PostgreSQL. Utiliza contenedores Docker para facilitar su despliegue y está preparada para pruebas mediante herramientas como Insomnia o Postman.
