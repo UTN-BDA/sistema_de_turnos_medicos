@@ -11,4 +11,5 @@ app = create_app()
 
 # Ejecutar el servidor con soporte para WebSocket mediante Flask-SocketIO
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000, debug=True, allow_unsafe_werkzeug=True)
+    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+
