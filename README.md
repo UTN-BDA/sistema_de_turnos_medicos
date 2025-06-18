@@ -18,6 +18,7 @@ Este proyecto tiene como objetivo desarrollar una aplicación backend para la ge
 - **Framework:** Flask
 - **ORM:** SQLAlchemy
 - **Base de datos:** PostgreSQL
+- **Gesttor de base de datos:** PgAdmin Web
 - **Contenedores:** Docker y Docker Compose
 - **Estructura modular:** Separación en capas (modelos, servicios, rutas, esquemas, notificaciones)
 
@@ -34,3 +35,4 @@ El proyecto sigue una estructura organizada para facilitar su mantenimiento y es
 ## Información adicional
 
 Este proyecto está orientado principalmente a la aplicación de conceptos avanzados de modelado y diseño de bases de datos relacionales, por lo que el foco está puesto en la arquitectura de datos, relaciones entre entidades y su interacción con el ORM. El desarrollo de la interfaz gráfica no está contemplado en esta etapa, pero el backend queda preparado para futuras integraciones.
+**Dirigirse a la rama principal "develop" **
