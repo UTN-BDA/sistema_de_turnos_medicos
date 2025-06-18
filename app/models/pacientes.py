@@ -2,7 +2,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.models.usuarios import Usuario, TipoUsuario
-from app.models.turnos import Turno  
+from app.models.turnos import Turno
 
 class Paciente(Usuario):
     __tablename__ = "pacientes"
@@ -12,9 +12,6 @@ class Paciente(Usuario):
         'polymorphic_identity': TipoUsuario.PACIENTE,
     }
 
-    # Relaciones
-    # Se especifica explícitamente la clave foránea para la relación 'turnos'
-    # Esto le dice a SQLAlchemy que use 'Turno.paciente_id' para vincular Paciente con Turno.
+    # Relación inversa
     turnos = relationship("Turno", back_populates="paciente", foreign_keys=[Turno.paciente_id])
-    notificaciones = relationship("Notificacion", back_populates="paciente")
-
+    

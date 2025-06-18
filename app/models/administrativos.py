@@ -1,6 +1,8 @@
 # Modelo Administrativo como subclase de Usuario
 from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from app.models.usuarios import Usuario, TipoUsuario
+from app.models.turnos import Turno
 
 class Administrativo(Usuario):
     __tablename__ = "administrativos"
@@ -9,3 +11,7 @@ class Administrativo(Usuario):
     __mapper_args__ = {
         'polymorphic_identity': TipoUsuario.ADMIN,
     }
+
+    # Relaciones inversas
+    turnos = relationship("Turno", back_populates="administrativo", foreign_keys=[Turno.administrativo_id])
+

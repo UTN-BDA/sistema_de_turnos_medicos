@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- jinja2 -->
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Portal del Paciente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Inyectar ID del paciente en el head usando meta -->
+    <meta name="paciente-id" content="{{ paciente_id }}">
+</head>
+
+<body class="fondo-claro">
+
+    <div class="smartphone-fondo">
+        <img src="{{ url_for('static', filename='img/smartphone-frame.png') }}" alt="Smartphone" class="smartphone-img">
+        <!-- Zona de la pantalla para superponer notificaciones -->
+        <div class="pantalla-notificaciones" id="contenedor-notificaciones">
+            <h2 style="font-size: 1rem; margin-top: 0;">Paciente {{ paciente_id }}</h2>
+            <!-- Las notificaciones aparecerán aquí -->
+            <div id="zona-dinamica-notificaciones"></div>
+        </div>
+    </div>
+
+    <!-- Cargar Socket.IO -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" crossorigin="anonymous"></script>
+
+    <!-- Script propio para gestionar notificaciones -->
+    <script src="{{ url_for('static', filename='js/paciente.js') }}"></script>
+</body>
+</html>

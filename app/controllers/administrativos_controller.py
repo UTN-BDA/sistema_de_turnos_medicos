@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from app.models.administrativos import Administrativo
-from app.database import db
+from app.extensions import db
 
 def listar_administrativos():
     administrativos = Administrativo.query.all()
