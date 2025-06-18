@@ -35,4 +35,5 @@ El proyecto sigue una estructura organizada para facilitar su mantenimiento y es
 ## Información adicional
 
 Este proyecto está orientado principalmente a la aplicación de conceptos avanzados de modelado y diseño de bases de datos relacionales, por lo que el foco está puesto en la arquitectura de datos, relaciones entre entidades y su interacción con el ORM. El desarrollo de la interfaz gráfica no está contemplado en esta etapa, pero el backend queda preparado para futuras integraciones.
-**Dirigirse a la rama principal "develop" **
+
+**Dirigirse a la rama principal "develop"**
