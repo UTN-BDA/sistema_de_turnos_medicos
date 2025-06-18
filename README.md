@@ -28,9 +28,9 @@ Este proyecto es una API REST para la gestión de turnos médicos, desarrollada 
 Podés clonar este repositorio de dos formas:
 
 ```bash
-git clone https://github.com/usuario/nombre-proyecto.git
+https://github.com/UTN-BDA/sistema_de_turnos_medicos.git
 # o
-gh repo clone usuario/nombre-proyecto
+gh repo clone UTN-BDA/sistema_de_turnos_medicos
 ```
 
 ---
