@@ -28,9 +28,9 @@ Este proyecto es una API REST para la gestión de turnos médicos, desarrollada 
 Podés clonar este repositorio de dos formas:
 
 ```bash
-git clone https://github.com/usuario/nombre-proyecto.git
+https://github.com/UTN-BDA/sistema_de_turnos_medicos.git
 # o
-gh repo clone usuario/nombre-proyecto
+gh repo clone UTN-BDA/sistema_de_turnos_medicos
 ```
 
 ---
@@ -51,7 +51,7 @@ cp example.env .env
 
 ```env
 FLASK_ENV=development
-DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/nombre_db
+DATABASE_URL=postgresql://usuario:contraseña@db:5432/sistema_de_turnos_dev
 ```
 
 ---
@@ -61,7 +61,7 @@ DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/nombre_db
 Para levantar la aplicación, ejecutá en la raíz del proyecto:
 
 ```bash
-docker-compose up --build
+docker compose up --build -d
 ```
 
 Esto iniciará los contenedores de la aplicación y la base de datos.
@@ -153,7 +153,7 @@ La aplicación expone dos funciones coordinadoras para la gestión de turnos:
 1. Con los contenedores ejecutándose, accedé a:
 
 ```
-http://localhost:5000/web/pacientes/<id>
+http://localhost:5000/web/paciente/<id>
 ```
 
 2. Reemplazá `<id>` con el ID de un paciente registrado en la base de datos.
