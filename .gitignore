@@ -19,3 +19,5 @@ Thumbs.db
 
 # Archivos de logs (opcional)
 *.log
+# Archivos backup
+db/backup.sql
