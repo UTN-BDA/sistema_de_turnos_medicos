@@ -153,7 +153,7 @@ La aplicación expone dos funciones coordinadoras para la gestión de turnos:
 1. Con los contenedores ejecutándose, accedé a:
 
 ```
-http://localhost:5000/web/pacientes/<id>
+http://localhost:5000/web/paciente/<id>
 ```
 
 2. Reemplazá `<id>` con el ID de un paciente registrado en la base de datos.
