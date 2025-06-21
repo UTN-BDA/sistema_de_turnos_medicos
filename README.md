@@ -75,9 +75,11 @@ Una vez que los contenedores estén corriendo, tenés dos opciones:
 ### Opción 1: Usar el backup
 
 1. Pedir el backup a algún desarrolador mediante discord:
-    **fbayinay_**
-    **guillermo09213**
-    **nazaaab**
+   
+- **fbayinay_**
+-  **guillermo09213**
+-  **nazaaab**
+   
 2. Copia la carpeta suministrada a la raíz del proyecto.
 3. Abrí una nueva terminal.
 4. Copiá el archivo de backup al contenedor de la base de datos:
