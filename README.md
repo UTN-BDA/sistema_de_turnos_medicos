@@ -112,7 +112,7 @@ docker exec -it sistema_de_turnos_medicos-web-1 python -m scripts.seed_data
 3. Deberías ver un mensaje indicando que la población inicial fue exitosa.
 
 ---
-## Importante la opción que se elija se tiene que hacer con los volumenes vacíos
+## Importante: La opción que se elija se debe hacer con los volumenes vacíos
 
 Si ya probó con una opción y quiere probar la otra, debe hacer:
 
