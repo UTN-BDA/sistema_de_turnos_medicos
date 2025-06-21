@@ -7,7 +7,7 @@ from app.extensions import db
 
 class TipoNotificacion(PyEnum):
     OTORGAMIENTO = "otorgamiento"
-    CANCELACION = "cancelación"
+    CANCELACION = "cancelacion"
     REPROGRAMACION = "reprogramacion"
     CONSULTA_REALIZADA = "consulta_realizada"
     PERDIDA_TURNO = "perdida_del_turno"

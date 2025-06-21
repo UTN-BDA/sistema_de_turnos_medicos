@@ -58,7 +58,7 @@ DATABASE_URL=postgresql://usuario:contraseña@db:5432/sistema_de_turnos_dev
 
 ## Inicialización del proyecto
 
-Para levantar la aplicación, ejecutá en la raíz del proyecto:
+Para levantar la aplicación, ejecutá en la raíz del proyecto (recordar abrir Docker Desktop):
 
 ```bash
 docker compose up --build -d
@@ -72,22 +72,27 @@ Esto iniciará los contenedores de la aplicación y la base de datos.
 
 Una vez que los contenedores estén corriendo, tenés dos opciones:
 
-### ✅ Opción recomendada: Usar el script de backup
+### Opción 1: Usar el backup
 
-1. Abrí una nueva terminal.
-2. Copiá el archivo de backup al contenedor de la base de datos:
+1. Pedir el backup a algún desarrolador mediante discord:
+    **fbayinay_**
+    **guillermo09213**
+    **nazaaab**
+2. Copia la carpeta suministrada a la raíz del proyecto.
+3. Abrí una nueva terminal.
+4. Copiá el archivo de backup al contenedor de la base de datos:
 
 ```bash
-docker cp db/backup.sql <nombre_contenedor_db>:/backup.sql
+docker cp db/backup.sql sistema_de_turnos_medicos-db-1:/backup.sql
 ```
 
-3. Restaurá el contenido de la base de datos:
+5. Restaurá el contenido de la base de datos:
 
 ```bash
-docker exec -it <nombre_contenedor_db> psql -U <usuario> -d <nombre_bd> -f /backup.sql
+docker exec -it sistema_de_turnos_medicos-db-1 psql -U <usuario> -d <nombre_bd> -f /backup.sql
 ```
 
-### ⚠️ Opción alternativa (no recomendada): Usar `seed_data.py`
+### Opción 2: Usar `seed_data.py`
 
 1. Consultá el nombre del contenedor de la app con:
 
@@ -98,13 +103,35 @@ docker ps
 2. Ejecutá los siguientes comandos:
 
 ```bash
-docker exec -it <nombre_contenedor_app> flask db upgrade
-docker exec -it <nombre_contenedor_app> python -m scripts.seed_data
+docker exec -it sistema_de_turnos_medicos-web-1 flask db upgrade
+docker exec -it sistema_de_turnos_medicos-web-1 python -m scripts.seed_data
 ```
 
 3. Deberías ver un mensaje indicando que la población inicial fue exitosa.
 
 ---
+## Importante la opción que se elija se tiene que hacer con los volumenes vacíos
+
+Si ya probó con una opción y quiere probar la otra, debe hacer:
+
+1. Parar los contenedores:
+
+```bash
+docker compose down
+```
+
+2. Eliminar volúmenes:
+
+```bash
+docker volume rm sistema_de_turnos_medicos_postgres_data
+```
+
+3. Levantar de nuevo los contenedores:
+
+```bash
+docker compose up --build -d
+```
+**Ya puede probar la otra opción**   
 
 ## Uso de la API
 
