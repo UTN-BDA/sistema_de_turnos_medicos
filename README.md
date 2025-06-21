@@ -166,7 +166,7 @@ La aplicación expone dos funciones coordinadoras para la gestión de turnos:
 
 ```json
 {
-  "turno_id": 2,
+  "turno_id": 1,
   "nueva_fecha_str": "2025-06-14T10:30:00",
   "nuevo_estado": "reprogramado",
   "origen": "administrativo"
